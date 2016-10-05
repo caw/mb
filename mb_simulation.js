@@ -48,6 +48,7 @@
         hs: 1.0,
 
         dt: 0.05,
+	pms: 7.1,
 
         starling: function (pra) {
             var r2 = 6 * (pra + 4);
@@ -78,6 +79,7 @@
                 this.va = this.va + this.dva * this.dt;
                 this.vv = this.vv + this.dvv * this.dt;
                 this.vra = this.vra + this.dvra * this.dt;
+		this.pms = (this.vrae + this.vae + this.vve) / (this.cra + this.ca + this.cv);
             }
         }
     }
@@ -95,16 +97,12 @@
 
     var deltaFunctions = {
         ra_dec: function () {
-            console.log('ra_dec called');
-	    console.log(circ.ra);
             if (circ.ra > 1) {
                 circ.ra -= 30;
             };
             canvas.renderAll();
         },
         ra_inc: function () {
-            console.log('ra_inc called');
-	    console.log(circ.ra);
             if (circ.ra < 3000) {
                 circ.ra += 30;
 		console.log('and incremented to:');
@@ -123,6 +121,20 @@
             console.log('vvo_inc');
             if (circ.vvo < 6.0) {
                 circ.vvo += 0.05;
+            };
+            canvas.renderAll();
+        },
+	cv_dec: function () {
+            console.log('cv_dec');
+            if (circ.cv > 0.001) {
+                circ.cv -= 0.001;
+            };
+            canvas.renderAll()
+        },
+        cv_inc: function () {
+            console.log('cv_inc');
+            if (circ.cv < 1.20) {
+                circ.cv += 0.001;
             };
             canvas.renderAll();
         },
@@ -205,7 +217,35 @@
         id: "ra_dec"
     });
 
-    var vrae = new fabric.Text(circ.vrae.toFixed(1), {
+    var cv = new fabric.Text("CV: " + circ.cv.toFixed(4), {
+        left: 100,
+        top: 280,
+        fontFamily: 'Verdana',
+        fontSize: 32,
+        selectable: false
+    });
+
+   var cv_inc = new fabric.Text("+", {
+       left: 260,
+       top: 310,
+        fontFamily: 'Verdana',
+        fontSize: 32,
+        selectable: false,
+        fill: '#00ff00', 
+        id: "cv_inc"
+    });
+
+    var cv_dec = new fabric.Text("_", {
+        left: 100,
+        top: 295,
+        fontFamily: 'Verdana',
+        fontSize: 32,
+        selectable: false,
+	fill: '#00ff00',
+        id: "cv_dec"
+    });
+
+   var vrae = new fabric.Text(circ.vrae.toFixed(1), {
         left: 100,
         top: 100,
         fontFamily: 'Verdana'
@@ -220,6 +260,16 @@
     var pra = new fabric.Text("PRA: " + circ.pra.toFixed(0), {
         left: 300,
         top: 90,
+        fontSize: 32,
+        fontFamily: 'Verdana',
+        fill: '#000000',
+        selectable: false
+
+    });
+
+    var pms = new fabric.Text("Pms: " + circ.pms.toFixed(1), {
+        left: 10,
+        top: 620,
         fontSize: 32,
         fontFamily: 'Verdana',
         fill: '#000000',
@@ -371,17 +421,19 @@
     });
 
     // not displaying venous return = fv here
-    canvas.add(ra, pra, fa, pa, vvo, vao, pv, hs, ra_inc, ra_dec, vvo_inc, vvo_dec, vae, vve, hs_inc, hs_dec, run);
+    canvas.add(pms, ra, pra, fa, pa, vvo, vao, pv, cv, cv_inc, cv_dec, hs, ra_inc, ra_dec, vvo_inc, vvo_dec, vae, vve, hs_inc, hs_dec, run);
    
     canvas.bringToFront(fa);
 
 
     var update_display = function () {
         fa.set({text: "CO: " + (circ.fa * 60).toFixed((1))});
+        pms.set({text: "Pms: " + circ.pms.toFixed(1)});
         vra.set({text: "VRA: " + circ.vra.toFixed(1)});
         ra.set({text: "Art Res: " + (circ.ra/SECONDS_IN_MINUTE).toFixed(0)});
         pra.set({text: "PRA: " + circ.pra.toFixed(0)});
         pa.set({text: "MAP: " + circ.pa.toFixed(0)});
+	cv.set({text: "CV: " + circ.cv.toFixed(4)});
         pv.set({text: "PV: " + circ.pv.toFixed(1)});
         //fv.set({text: "VR: " + (circ.fv * SECONDS_IN_MINUTE).toFixed(1)});
         hs.set({text: "HS: " + circ.hs.toFixed(2)});
