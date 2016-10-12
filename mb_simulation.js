@@ -6,8 +6,7 @@
 ;(function () {
     const SECONDS_IN_MINUTE = 60;
 
-    var never_run = true;
-    var running = false;
+    var running = true;
 
     // remember - the flows are converted to liters/sec
     var circ = {
@@ -122,8 +121,8 @@
         },
         vvo_dec: function () {
             console.log('vvo_dec');
-            if (circ.vvo > 5) {
-                circ.vvo -= 5;
+            if (circ.vvo > 1) {
+                circ.vvo -= 0.05;
             };
             canvas.renderAll()
         },
@@ -182,9 +181,6 @@
         },
 
         run_toggle: function () {
-	    if (never_run) {
-		never_run = false;
-	    };
             if (running) {
                 console.log('pausing');
                 running = false;
@@ -497,7 +493,7 @@
         selectable: false
     });
 
-    var run = new fabric.Text("Start", {
+    var run = new fabric.Text("Pause", {
         left: 800,
         top: 620,
         fontFamily: 'Verdana',
@@ -528,11 +524,9 @@
         hs.set({text: "HS: " + circ.hs.toFixed(2)});
         vvo.set({text: "Vv0: " + circ.vvo.toFixed(2)});
         vao.set({text: "Va0: " + circ.vao.toFixed(2)});
-        if (! never_run) {
         vve.set({text: "Vve: " + circ.vve.toFixed(2)});
         vae.set({text: "Vae: " + circ.vae.toFixed(2)});
-	run.set({text: running ? "Pause" : "Resume"});
-	};
+  
         canvas.renderAll();
     };
 
