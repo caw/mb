@@ -84,7 +84,7 @@
     }
 
     var canvas = new fabric.Canvas('c');
-    canvas.backgroundColor = "gray";
+    canvas.backgroundColor = "#cccccc";
     
     canvas.on('mouse:down', function (options) {
         if (options.target) {
@@ -162,18 +162,15 @@
             canvas.renderAll();
         },
        hs_dec: function () {
-            console.log('hs_dec' + circ.hs);
             if (circ.hs > 0) {
                 circ.hs -= 0.05;
             };
             if (circ.hs <= 0) {
                 circ.hs = 0;
             };
-            console.log('hs_dec' + circ.hs);
             canvas.renderAll();
         },
         hs_inc: function () {
-            console.log('hs_inc');
             if (circ.hs < 3.0) {
                 circ.hs += 0.05;
             };
@@ -214,6 +211,7 @@
         top: 520,
         fontFamily: 'Verdana',
         fontSize: 32,
+        fill: '#777777',        
         selectable: false
     });
 
@@ -223,7 +221,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-        fill: '#00ff00', 
+        fill: '#ffffff', 
         id: "ra_inc"
     });
 
@@ -233,7 +231,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: '#00ff00',
+	    fill: '#ffffff',
         id: "ra_dec"
     });
 
@@ -242,6 +240,7 @@
         top: 520,
         fontFamily: 'Verdana',
         fontSize: 32,
+        fill: '#777777',
         selectable: false
     });
 
@@ -251,7 +250,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-        fill: '#00ff00', 
+        fill: '#ffffff', 
         id: "rv_inc"
     });
 
@@ -261,7 +260,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-    fill: '#00ff00',
+    fill: '#ffffff',
         id: "rv_dec"
     });
 
@@ -271,6 +270,7 @@
         top: 280,
         fontFamily: 'Verdana',
         fontSize: 32,
+        fill: '#777777',        
         selectable: false
     });
 
@@ -280,7 +280,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-        fill: '#00ff00', 
+        fill: '#ffffff', 
         id: "cv_inc"
     });
 
@@ -290,7 +290,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: '#00ff00',
+	fill: '#ffffff',
         id: "cv_dec"
     });
 
@@ -299,6 +299,7 @@
         top: 280,
         fontFamily: 'Verdana',
         fontSize: 32,
+        fill: '#777777',        
         selectable: false
     });
 
@@ -308,7 +309,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-        fill: '#00ff00', 
+        fill: '#ffffff', 
         id: "ca_inc"
     });
 
@@ -318,7 +319,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-    fill: '#00ff00',
+    fill: '#ffffff',
         id: "ca_dec"
     });
 
@@ -341,7 +342,7 @@
         top: 80,
         fontSize: 32,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
 
     });
@@ -351,7 +352,7 @@
         top: 620,
         fontSize: 32,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
 
     });
@@ -361,7 +362,7 @@
         top: 120,
         fontSize: 32,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
     });
 
@@ -370,7 +371,7 @@
         top: 120,
         fontSize: 32,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
     });
 
@@ -379,7 +380,7 @@
         left: 700,
         top: 440,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         fontSize: 32,
         selectable: false
     });
@@ -389,7 +390,7 @@
         left: 100,
         top: 440,
         fontFamily: 'Verdana',
-        fill: '#000000',
+        fill: '#777777',
         fontSize: 32,
         selectable: false
     });
@@ -405,7 +406,7 @@
         top: 200,
         fontFamily: 'Verdana',
         fontSize: 32,
-        fill: '#000000',
+        fill: '#ff0000',
         selectable: false
     });
 
@@ -414,7 +415,7 @@
 	   top: 360,
 	   fontFamily: 'Verdana',
 	   fontSize: 32,
-	   fill: '#000000',
+	   fill: '#777777',
 	   selectable: false
     });
 
@@ -423,7 +424,7 @@
         top: 360,
         fontFamily: 'Verdana',
         fontSize: 32,
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
     });
 
@@ -433,7 +434,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: '#00ff00',
+	fill: '#ffffff',
         id: "vvo_dec"
     });
 
@@ -443,7 +444,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: '#00ff00',
+	fill: '#ffffff',
         id: "vvo_inc"
     });
 
@@ -452,7 +453,7 @@
         top: 200,
         fontFamily: 'Verdana',
         fontSize: 32,
-        fill: '#000000',
+        fill: '#777777',
     });
 
     var hs_dec = new fabric.Text("_", {
@@ -461,7 +462,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: '#00ff00',
+	fill: '#ffffff',
         id: "hs_dec"
     });
 
@@ -471,7 +472,7 @@
         fontFamily: 'Verdana',
         fontSize: 32,
         selectable: false,
-	fill: "#00ff00",
+	fill: "#ffffff",
         id: "hs_inc"
     });
 
@@ -489,7 +490,7 @@
         top: 200,
         fontFamily: 'Verdana',
         fontSize: 32,
-        fill: '#000000',
+        fill: '#777777',
         selectable: false
     });
 
@@ -498,7 +499,7 @@
         top: 620,
         fontFamily: 'Verdana',
         fontsize: 32,
-        fill: '#00ff00',
+        fill: '#ffffff',
         selectable: false,
         id: "run_toggle"
     });
